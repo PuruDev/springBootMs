@@ -3,17 +3,22 @@ package com.sboot.ms.utility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 
+@Profile("dev")
+@Component
 public class DBConnection {
 	private static final Logger log= 	LoggerFactory.getLogger(DBConnection.class);
 	
-	@Value("${database.url}")
+	@Value("${database.deploy.url}")
 	private String dburl;
 	
-	@Value("${database.userid}")
+	@Value("${database.deploy.userid}")
 	private String dbuid;
 	
-	@Value("${database.password}")
+	@Value("${database.deploy.password}")
 	private String dbpwd;
 	
 	public void getConnection(){
